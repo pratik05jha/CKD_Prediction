@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CKD Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Chronic Kidney Disease Prediction</h1>
+        <form action="{{ url_for('predict') }}" method="post">
+            <!-- Add input fields for each feature here -->
+            <label for="age">Age:</label>
+            <input type="number" name="age" step="0.01" required><br>
+            <label for="bp">Blood Pressure:</label>
+            <input type="number" name="bp" step="0.01" required>
+
+            <label for="sg">Specific Gravity:</label>
+            <input type="number" name="sg" step="0.01" required>
+
+            <label for="al">Albumin:</label>
+            <input type="number" name="al" step="0.01" required>
+
+            <label for="su">Sugar:</label>
+            <input type="number" name="su" step="0.01" required>
+
+            <label for="rbc">Red Blood Cells:</label>
+            <input type="number" name="rbc" step="0.01" required>
+
+            <label for="pc">Pus Cell:</label>
+            <input type="number" name="pc" step="0.01" required>
+
+            <label for="pcc">Pus Cell Clumps:</label>
+            <input type="number" name="pcc" step="0.01" required>
+
+            <label for="ba">Bacteria:</label>
+            <input type="number" name="ba" step="0.01" required>
+
+            <label for="bgr">Blood Glucose Random:</label>
+            <input type="number" name="bgr" step="0.01" required>
+
+            <label for="bu">Blood Urea:</label>
+            <input type="number" name="bu" step="0.01" required>
+
+            <label for="sc">Serum Creatinine:</label>
+            <input type="number" name="sc" step="0.01" required>
+
+            <label for="sod">Sodium:</label>
+            <input type="number" name="sod" step="0.01" required>
+
+            <label for="pot">Potassium:</label>
+            <input type="number" name="pot" step="0.01" required>
+
+            <label for="hemo">Hemoglobin:</label>
+            <input type="number" name="hemo" step="0.01" required>
+
+            <label for="pcv">Packed Cell Volume:</label>
+            <input type="number" name="pcv" step="0.01" required>
+
+            <label for="wc">White Blood Cell Count:</label>
+            <input type="number" name="wc" step="0.01" required>
+
+            <label for="rc">Red Blood Cell Count:</label>
+            <input type="number" name="rc" step="0.01" required>
+
+            <label for="htn">Hypertension:</label>
+            <input type="number" name="htn" step="0.01" required>
+
+            <label for="dm">Diabetes Mellitus:</label>
+            <input type="number" name="dm" step="0.01" required>
+
+            <label for="cad">Coronary Artery Disease:</label>
+            <input type="number" name="cad" step="0.01" required>
+
+            <label for="appet">Appetite:</label>
+            <input type="number" name="appet" step="0.01" required>
+
+            <label for="pe">Pedal Edema:</label>
+            <input type="number" name="pe" step="0.01" required>
+
+            <label for="ane">Anemia:</label>
+            <input type="number" name="ane" step="0.01" required>
+            
+            <input type="submit" value="Predict">
+        </form>
+        {% if results %}
+            <h2>Results:</h2>
+            <ul>
+                {% for model, prediction in results.items() %}
+                    <li>{{ model }}: {{ prediction }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
